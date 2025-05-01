@@ -1,0 +1,26 @@
+.eva-background-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.eva-img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border: 2px solid #ff0033;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.eva-img:hover {
+    transform: scale(1.05);
+    opacity: 1;
+    box-shadow: 0 0 20px #ff0033;
+}

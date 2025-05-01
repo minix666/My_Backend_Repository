@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> MI PAGINA WEB#1 AAA</title>
+    <style>
+        body {
+            background: url('../images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--nerv-light);
+        }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+    
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        
+        :root {
+            --nerv-red: #990000;
+            --nerv-orange: #129752;
+            --nerv-black: #000000;
+            --nerv-gray: #333333;
+            --nerv-light: #CCCCCC;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        body {
+            
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--nerv-light);
+            height: 100vh;
+            
+            
+            
+  
+             
+                
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            border-bottom: 2px solid var(--nerv-red);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nerv-logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--nerv-light);
+        }
+        
+        .nerv-logo span {
+            color: var(--nerv-red);
+        }
+        
+        .header-status {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-left: 3px solid var(--nerv-red);
+        }
+        
+        .main-terminal {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid var(--nerv-gray);
+            border-radius: 3px;
+            padding: 15px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .terminal-header {
+            border-bottom: 1px solid var(--nerv-gray);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: var(--nerv-orange);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .terminal-title {
+            font-size: 1.5em;
+            position: relative;
+        }
+        
+        .terminal-title::before {
+            content: ">";
+            color: var(--nerv-red);
+            margin-right: 8px;
+        }
+        
+        .system-status {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .status-panel {
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid var(--nerv-gray);
+            padding: 15px;
+        }
+        
+        .sync-rate {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid var(--nerv-gray);
+            margin-top: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--nerv-red);
+            width: 51%; /* SYNC RATE */
+            transition: width 1s ease;
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .energy-meter {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .energy-fill {
+            width: 98%; /* ENERGY LEVEL */
+            background: var(--nerv-orange);
+        }
+        
+        .control-panel {
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid var(--nerv-gray);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .warning-message {
+            background: rgba(153, 0, 0, 0.2);
+            border-left: 3px solid var(--nerv-red);
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .warning-icon {
+            margin-right: 10px;
+            color: var(--nerv-red);
+            font-size: 1.5em;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .nerv-button {
+            background: var(--nerv-gray);
+            color: var(--nerv-light);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--nerv-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .nerv-button-primary {
+            background: var(--nerv-red);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .nerv-button:hover {
+            background: rgba(153, 0, 0, 0.8);
+        }
+        
+        .nerv-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent
+            );
+            transition: all 0.6s ease;
+        }
+        
+        .nerv-button:hover::before {
+            left: 100%;
+        }
+        
+        .visual-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .display-frame {
+            border: 1px solid var(--nerv-gray);
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .display-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .frame-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid var(--nerv-red);
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .frame-border::before,
+        .frame-border::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--nerv-red);
+            border-style: solid;
+        }
+        
+        .frame-border::before {
+            top: -1px;
+            left: -1px;
+            border-width: 2px 0 0 2px;
+        }
+        
+        .frame-border::after {
+            bottom: -1px;
+            right: -1px;
+            border-width: 0 2px 2px 0;
+        }
+        
+        .frame-label {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2px 8px;
+            font-size: 12px;
+            z-index: 3;
+        }
+        
+        .timer-display {
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid var(--nerv-gray);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .clock {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--nerv-light);
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .footer {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 40px;
+            color: var(--nerv-gray);
+        }
+        
+        /* NERV animated hexagon pattern */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: 
+                linear-gradient(30deg, var(--nerv-red) 12%, transparent 12.5%, transparent 87%, var(--nerv-red) 87.5%, var(--nerv-red)),
+                linear-gradient(150deg, var(--nerv-red) 12%, transparent 12.5%, transparent 87%, var(--nerv-red) 87.5%, var(--nerv-red)),
+                linear-gradient(30deg, var(--nerv-red) 12%, transparent 12.5%, transparent 87%, var(--nerv-red) 87.5%, var(--nerv-red)),
+                linear-gradient(150deg, var(--nerv-red) 12%, transparent 12.5%, transparent 87%, var(--nerv-red) 87.5%, var(--nerv-red)),
+                linear-gradient(60deg, var(--nerv-orange) 25%, transparent 25.5%, transparent 75%, var(--nerv-orange) 75%, var(--nerv-orange)),
+                linear-gradient(60deg, var(--nerv-orange) 25%, transparent 25.5%, transparent 75%, var(--nerv-orange) 75%, var(--nerv-orange));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    <div class="container">
+        <header>
+            <div class="nerv-logo">N<span>E</span>RV</div>
+            <div class="header-status">TERMINAL DE ACCESO PRINCIPAL_</div>
+        </header>
+        
+        <div class="main-terminal">
+            <div class="terminal-header">
+                <div class="terminal-title">MI PRIMER PAGINA WEB</div>
+                <div class="terminal-status blink">ACTIVE</div>
+            </div>
+            
+            <div class="system-status">
+                <div class="status-panel">
+                    <div class="sync-rate">SALUD:</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div style="text-align: right; margin-top: 5px;">51%</div>
+                </div>
+                
+                <div class="status-panel">
+                    <div class="energy-meter">ENERGÍA:</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill energy-fill"></div>
+                    </div>
+                    <div style="text-align: right; margin-top: 5px;">99%</div>
+                </div>
+            </div>
+            
+            <div class="control-panel">
+                <div class="warning-message">
+                    PROBABILIDAD DE MORIR: <span class="warning-icon">⚠️</span> 99.9%
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="nerv-button nerv-button-primary">⚡ INICIAR SISTEMA</button>
+                    <button class="nerv-button">DIAGNÓSTICO</button>
+                    <button class="nerv-button">A.T. FIELD</button>
+                </div>
+            </div>
+            
+            <div class="visual-display">
+                <div class="display-frame">
+                    <img src="../images/hola.jpeg" alt="Imagen de sistema NERV" id="img-left">
+                    <div class="frame-border"></div>
+                    <div class="frame-label">REF-01</div>
+                </div>
+                
+                <div class="display-frame">
+                    <img src="../images/eva-02.jpeg" alt="EVA Detectado" id="img-right">
+                    <div class="frame-border"></div>
+                    <div class="frame-label">eva-02</div>
+                </div>
+            </div>
+             <div class="display-frame">
+                    <img src="../images/background.png" alt="EVA Detectado" id="img-up">
+                    <div class="frame-border"></div>
+                    <div class="frame-label"><eva-03></eva-03></div>
+                </div>
+
+            </div>
+            <div class="timer-display">
+                <div class="clock">00:00:00</div>
+                <div class="status-text">MAGI SYSTEM: OPERATIONAL</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 2025 NERV • SEELE APPROVED • TERMINAL CODE: NRV-EVA-SYSTEM-2025
+        </div>
+    </div>
+
+    <script>
+        // Actualizar reloj
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            document.querySelector('.clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        
+        setInterval(updateClock, 1000);
+        updateClock();
+        
+        // Simulación de variaciones en sync rate
+        function fluctuateSyncRate() {
+            const syncFill = document.querySelector('.progress-fill');
+            let currentRate = 51;
+            
+            setInterval(() => {
+                const fluctuation = Math.random() * 2 - 1; // -1 a +1
+                currentRate += fluctuation;
+                
+                if (currentRate < 40) currentRate = 40;
+                if (currentRate > 60) currentRate = 60;
+                
+                syncFill.style.width = `${currentRate}%`;
+                document.querySelector('.sync-rate').nextElementSibling.nextElementSibling.textContent = `${Math.round(currentRate)}%`;
+            }, 2000);
+        }
+        
+        fluctuateSyncRate();
+        
+        // Las imágenes se cargan directamente con la ruta relativa desde el HTML
+        // Función para intentar varias rutas alternativas si las imágenes no cargan
+        function checkAndFixImagePaths() {
+            const imgLeft = document.getElementById('img-left');
+            const imgRight = document.getElementById('img-right');
+            const imgDown = document.getElementById('img-down');
+            
+            // Alternativas de rutas para probar si las originales fallan
+            const alternativePathsLeft = [
+                '../images/hola.jpeg',
+                'images/hola.jpeg',
+                '/images/hola.jpeg',
+                './images/hola.jpeg',
+                '/public/images/hola.jpeg',
+                'C:/Users/sebas/Desktop/EvaProject/public/images/hola.jpeg'
+            ];
+            
+            const alternativePathsRight = [
+                '../images/eva-02.jpeg',
+                'images/eva-02.jpeg',
+                '/images/eva-02.jpeg',
+                './images/eva-02.jpeg',
+                '/public/images/eva-02.jpeg',
+                'C:/Users/sebas/Desktop/EvaProject/public/images/eva-02.jpeg'
+            ];
+            
+            // Función para intentar cargar con diferentes rutas
+            function tryLoadingImage(img, paths, currentIndex = 0) {
+                if (currentIndex >= paths.length) return;
+                
+                img.onerror = () => {
+                    console.log(`Intentando ruta alternativa: ${paths[currentIndex + 1]}`);
+                    if (currentIndex + 1 < paths.length) {
+                        img.src = paths[currentIndex + 1];
+                        tryLoadingImage(img, paths, currentIndex + 1);
+                    }
+                };
+                
+                img.src = paths[currentIndex];
+                console.log(`Probando ruta: ${paths[currentIndex]}`);
+            }
+            
+            // Intenta cargar las imágenes con diferentes rutas
+            tryLoadingImage(imgLeft, alternativePathsLeft);
+            tryLoadingImage(imgRight, alternativePathsRight);
+        }
+        
+        // Ejecutar al cargar la página
+        window.onload = checkAndFixImagePaths;
+    </script>
+</body>
+</html>
